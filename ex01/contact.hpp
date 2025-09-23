@@ -2,6 +2,7 @@
 # define CONTACT_HPP
 
 #include <string>
+#include "contact.cpp"
 
 class Contact
 {

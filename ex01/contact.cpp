@@ -8,3 +8,5 @@ Contact::Contact(std::string first, std::string last, std::string nickname, int 
   this->m_phonenumber = number;
   this->m_darkest_secret = secret;
 }
+
+Contact::~Contact() {}
