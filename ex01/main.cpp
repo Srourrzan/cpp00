@@ -1,5 +1,5 @@
-#include "phonebook.hpp"
 #include "contact.hpp"
+#include "phonebook.hpp"
 #include <iostream>
 
 std::string prompt()
@@ -11,12 +11,16 @@ std::string prompt()
   return (value);
 }
 
-Contact &addContact(std::string &first, std::string &last, std::string &nickname,
-	std::string &phone_number, std::string )
-{}
+Contact addContact(std::string &first, std::string &last, std::string &nickname,
+	std::string &phone_number, std::string &secret)
+{
+  Contact new_contact(first, last, nickname, phone_number, secret);
+  return (new_contact);
+}
 
 void fetchContactData()
 {
+  Contact new_contact;
 	std::string first_name;
 	std::string last_name;
 	std::string nickname;
@@ -33,7 +37,7 @@ void fetchContactData()
 	std::getline(std::cin, phone_number);
 	std::cout << "Enter contact's darkest secret:\n";
 	std::getline(std::cin, darkest_secret);
-	addContact(first_name, last_name, nickname, 
+	new_contact = addContact(first_name, last_name, nickname, 
 		phone_number, darkest_secret);
 }
 

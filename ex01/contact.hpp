@@ -2,12 +2,13 @@
 # define CONTACT_HPP
 
 #include <string>
-#include "contact.cpp"
+//#include "contact.cpp"
 
 class Contact
 {
 public:
-  Contact(std::string first, std::string last, std::string nickname, int number, std::string secret);
+  Contact();
+  Contact(std::string first, std::string last, std::string nickname, std::string number, std::string secret);
   ~Contact();
 
 private:

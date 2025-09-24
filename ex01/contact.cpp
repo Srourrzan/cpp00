@@ -1,6 +1,8 @@
 #include "contact.hpp"
 
-Contact::Contact(std::string first, std::string last, std::string nickname, int number, std::string secret)
+Contact::Contact() {}
+
+Contact::Contact(std::string first, std::string last, std::string nickname, std::string number, std::string secret)
 {
   this->m_first_name = first;
   this->m_last_name = last;
