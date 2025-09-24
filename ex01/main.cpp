@@ -11,49 +11,44 @@ std::string prompt()
   return (value);
 }
 
-Contact addContact(std::string &first, std::string &last, std::string &nickname,
-	std::string &phone_number, std::string &secret)
+void setContactData(PhoneBook &phb)
 {
-  Contact new_contact(first, last, nickname, phone_number, secret);
-  return (new_contact);
-}
-
-void fetchContactData()
-{
-  Contact new_contact;
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	std::string phone_number;
-	std::string darkest_secret;
+  std::string contactData[5];
 
 	std::cout << "Enter contact's first name:\n";
-	std::getline(std::cin, first_name);
+	std::getline(std::cin, contactData[0]);
 	std::cout << "Enter last name:\n";
-	std::getline(std::cin, last_name);
+	std::getline(std::cin, contactData[1]);
 	std::cout << "Enter nickname:\n";
-	std::getline(std::cin, nickname);
+	std::getline(std::cin, contactData[2]);
 	std::cout << "Enter phone number:\n";
-	std::getline(std::cin, phone_number);
+	std::getline(std::cin, contactData[3]);
 	std::cout << "Enter contact's darkest secret:\n";
-	std::getline(std::cin, darkest_secret);
-	new_contact = addContact(first_name, last_name, nickname, 
-		phone_number, darkest_secret);
+	std::getline(std::cin, contactData[4]);
+	phb.addContact(contactData[0], contactData[1], contactData[2], 
+	    contactData[3], contactData[4]);
+}
+
+void fetchContactData(PhoneBook &phb)
+{
+  phb.displayPhoneBook();
 }
 
 int main()
 {
   std::string cmd;
-
+  PhoneBook phb;
+  
   while (1)
 	{
 		cmd = prompt();
 	  	if (cmd == "ADD")
-			fetchContactData();
-	  		//addContact();
-	  	if (cmd == "EXIT")
+			setContactData(phb);
+		// else if (cmd == "SEARCH")
+		//   fetchContactData(phb);
+	  	else if (cmd == "EXIT")
 			break;
-	  	if (cmd != "ADD" && cmd != "SEARCH")
+	  	else
 			continue;
 	}
   return (0);
