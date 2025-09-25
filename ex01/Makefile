@@ -14,7 +14,10 @@ phonebook: $(OBJS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-re: fclean
+re: fclean all
+
+run:
+	./$(TARGET)
 
 fclean: clean
 	rm -f $(TARGET)
