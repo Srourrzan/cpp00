@@ -2,7 +2,7 @@
 
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror -std=c++98
-SRCS=main.cpp contact.cpp phonebook.cpp
+SRCS=main.cpp contact.cpp phonebook.cpp utils.cpp contact_utils.cpp
 OBJS=$(SRCS:.cpp=.o)
 TARGET=phonebook
 

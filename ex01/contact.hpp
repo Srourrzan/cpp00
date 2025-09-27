@@ -11,6 +11,11 @@ public:
   ~Contact();
   bool isEmpty() const;
   void setFilled();
+  std::string getFirstName() const;
+  std::string getLastName() const;
+  std::string getNickname() const;
+  std::string getPhonenumber() const;
+  std::string getDarkestSecret() const;
 
 private:
   std::string m_first_name;

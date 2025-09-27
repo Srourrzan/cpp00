@@ -23,3 +23,28 @@ void Contact::setFilled()
 {
   m_is_empty = false;
 }
+
+std::string Contact::getFirstName() const
+{
+  return (m_first_name);
+}
+
+std::string Contact::getLastName() const
+{
+  return (m_last_name);
+}
+
+std::string Contact::getNickname() const
+{
+  return (m_nickname);
+}
+
+std::string Contact::getPhonenumber() const
+{
+  return (m_phonenumber);
+}
+
+std::string Contact::getDarkestSecret() const
+{
+  return (m_darkest_secret);
+}

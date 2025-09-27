@@ -1,6 +1,4 @@
-#include "phonebook.hpp"
-#include <iostream>
-#include <iomanip>
+#include "utils.hpp"
 
 PhoneBook::PhoneBook() {}
 
@@ -19,7 +17,7 @@ int PhoneBook::addContact(std::string &first, std::string &last, std::string &ni
 		{
 		  m_contacts[i] = new_contact;
 		  m_contacts[i].setFilled();
-		  break;
+		  break; //THIS IS NO FINISHED
 		}
 	  i++;
 	}
@@ -28,6 +26,21 @@ int PhoneBook::addContact(std::string &first, std::string &last, std::string &ni
 
 void PhoneBook::displayPhoneBook() const
 {
-	std::cout.fill('*');
-  std::cout << std::setw(10);
+  int i;
+  //int size;
+  Contact con;
+
+  i = 0;
+  //size = 0;
+  while (i < 8)
+	{
+	  con = m_contacts[i];
+	  printBorders();
+	  std::cout << std::setw(10) << std::left << i + 1 << '|';
+	  truncateOutput(con.getFirstName());
+	  truncateOutput(con.getLastName());
+	  truncateOutput(con.getNickname());
+	  std::cout << '\n';
+	  i++;
+	}
 }
