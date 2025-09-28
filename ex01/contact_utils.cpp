@@ -1,5 +1,6 @@
 #include "utils.hpp"
 #include <cctype>
+#include <sstream>
 
 static bool validateNumbers(const std::string &data)
 {
@@ -35,6 +36,37 @@ static void getContactData(std::string &data, const std::string &msg, bool valid
 	  }
 }
 
+static void displayContactData(const Contact &cont)
+{
+  std::cout << "First name: " << cont.getFirstName() << '\n';
+  std::cout << "Last name: " << cont.getLastName() << '\n';
+  std::cout << "Nickname: " << cont.getNickname() << '\n';
+  std::cout << "Phonenumber : " << cont.getPhonenumber() << '\n';
+  std::cout << "Darkest secret: " << cont.getDarkestSecret() << '\n';
+}
+
+static int tableLength(const Contact (&cons)[8])
+{
+  int i;
+
+  i = 0;
+  while(!cons[i].isEmpty())
+	i++;
+  return (i);
+}
+
+static bool inTableRange(const std::string &id, int len)
+{
+  int id_i;
+  std::stringstream id_ss;
+
+  id_ss << id;
+  id_ss >> id_i;
+  if (id_i > len || id_i < 1)
+	return (false);
+  return (true);
+}
+
 void setContactData(PhoneBook &phb)
 {
   std::string contactData[5];
@@ -49,21 +81,33 @@ void setContactData(PhoneBook &phb)
 
 void fetchContactData(PhoneBook &phb)
 {
-  std::string id;
-  // Contact (&cons)[8] =  phb.getContacts();
-  // Contact con;
-  
-  std::cout << "displaying contact table\n";
+  int id_i;
+  int table_len;
+  std::string id_s;
+  std::stringstream id_ss;
+  Contact (&cons)[8] =  phb.getContacts();
+
+  table_len = tableLength(cons);
+  if (table_len == 0)
+	{
+	  std::cout << "No contacts found in the phonebook\n";
+	  return ;
+	}
   phb.displayPhoneBook();
   while(1)
 	{
 	  std::cout << "enter contact id:\n";
-	  std::getline(std::cin, id);
-	  if (validateNumbers(id) && id.length() == 1 && (id[0] >= '1' && id[0] <= '8'))
+	  std::getline(std::cin, id_s);
+	  if (validateNumbers(id_s) && id_s.length() == 1 && inTableRange(id_s, table_len))
 		break;
-	} //convert id to int after getting the data from the user
-  // for(int i = 0; i < 8; i++)
-  // 	{
-  // 	  if (i == id)
-  // 	}
+	  else
+		std::cout << "invalid ID\n";
+	}
+  id_ss << id_s;
+  id_ss >> id_i;
+  for(int i = 0; i < 8; i++)
+	{
+	  if (i == id_i - 1)
+		displayContactData(cons[i]);
+	}
 }

@@ -49,15 +49,19 @@ void PhoneBook::displayPhoneBook() const
   Contact con;
 
   i = 0;
+  printHeader();
   while (i < 8)
 	{
 	  con = m_contacts[i];
-	  printBorders();
-	  std::cout << std::setw(10) << std::left << i +1 << '|';
-	  truncateOutput(con.getFirstName());
-	  truncateOutput(con.getLastName());
-	  truncateOutput(con.getNickname());
-	  std::cout << '\n';
+	  if (!m_contacts[i].isEmpty())
+		{
+		  printBorders();
+		  std::cout << '|' << std::setw(10) << std::left << i +1 << '|';
+		  truncateOutput(con.getFirstName());
+		  truncateOutput(con.getLastName());
+		  truncateOutput(con.getNickname());
+		  std::cout << '\n';
+		}
 	  i++;
 	}
 }

@@ -6,6 +6,7 @@
 #include "contact.hpp"
 #include "phonebook.hpp"
 
+void printHeader();
 void printBorders();
 std::string prompt();
 void setContactData(PhoneBook &phb);

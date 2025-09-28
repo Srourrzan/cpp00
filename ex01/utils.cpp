@@ -26,3 +26,14 @@ void truncateOutput(const std::string &word)
   else if (word.length() <= max_len)
 	std::cout << std::setw(10) << std::left << word << '|';
 }
+
+void printHeader()
+{
+  printBorders();
+  std::cout << '|';
+  truncateOutput("ID");
+  truncateOutput("Firat Name");
+  truncateOutput("Last Name");
+  truncateOutput("Nick Name");
+  std::cout << '\n';
+}
