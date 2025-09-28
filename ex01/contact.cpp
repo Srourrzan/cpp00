@@ -5,13 +5,13 @@ Contact::Contact()
 
 Contact::~Contact() {}
 
-Contact::Contact(std::string first, std::string last, std::string nickname, std::string number, std::string secret)
-  : m_first_name (first)
-  , m_last_name (last)
+Contact::Contact(std::string nickname, std::string last, std::string first, std::string number, std::string secret)
+  : m_is_empty (true)
   , m_nickname (nickname)
+  , m_last_name (last)
+  , m_first_name (first)
   , m_phonenumber (number)
   , m_darkest_secret (secret)
-  , m_is_empty (true)
 {}
 
 bool Contact::isEmpty() const

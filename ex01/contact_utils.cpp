@@ -10,7 +10,7 @@ static bool validateNumbers(const std::string &data)
   while(i < data.length())
 	{
 	  c = data[i];
-	  if (!(std::isdigit(static_cast<unsigned char>(c)) || c == '-'))
+	  if (!(std::isdigit(static_cast<unsigned char>(c))))
 		return (false);
 	  i++;
 	}
@@ -38,7 +38,7 @@ static void getContactData(std::string &data, const std::string &msg, bool valid
 void setContactData(PhoneBook &phb)
 {
   std::string contactData[5];
-
+  
   getContactData(contactData[0], "Enter contact's first name:\n", false);
   getContactData(contactData[1], "Enter last name:\n", false);
   getContactData(contactData[2], "Enter nickname:\n", false);
@@ -49,6 +49,21 @@ void setContactData(PhoneBook &phb)
 
 void fetchContactData(PhoneBook &phb)
 {
+  std::string id;
+  // Contact (&cons)[8] =  phb.getContacts();
+  // Contact con;
+  
   std::cout << "displaying contact table\n";
   phb.displayPhoneBook();
+  while(1)
+	{
+	  std::cout << "enter contact id:\n";
+	  std::getline(std::cin, id);
+	  if (validateNumbers(id) && id.length() == 1 && (id[0] >= '1' && id[0] <= '8'))
+		break;
+	} //convert id to int after getting the data from the user
+  // for(int i = 0; i < 8; i++)
+  // 	{
+  // 	  if (i == id)
+  // 	}
 }
