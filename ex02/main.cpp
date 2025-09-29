@@ -12,6 +12,8 @@ public:
   int getJ() const;
 };
 
+int Test::_i;
+
 Test::Test(int j): _j(j) {}
 
 int Test::getID() const
@@ -26,7 +28,7 @@ int Test::getJ() const
 
 int main()
 {
-  int Test::_i = 3;
+  Test::_i = 3;
   Test t(2);
 
   std::cout << "t.j = " << t.getJ() << '\n';
