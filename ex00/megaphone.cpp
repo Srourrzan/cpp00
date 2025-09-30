@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 			  argv[i][j] = std::toupper(static_cast<unsigned char>(argv[i][j]));
 			  j++;
 			}
-		  std::cout << argv[i];
+		  std::cout << argv[i] << ' ';
 		  i++;
 		}
 	  std::cout << std::endl;
